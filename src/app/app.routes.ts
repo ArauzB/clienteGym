@@ -12,6 +12,7 @@ import { PagoComponent } from './component/pago/pago.component';
 import { PasswordComponent } from './component/password/password.component';
 import { authguardGuard } from './guards/authguard.guard';
 import { VerificarComponent } from './component/verificar/verificar.component';
+import { PerfilComponent } from './component/perfil/perfil.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent,canActivate: [authguardGuard] },
@@ -25,6 +26,7 @@ export const routes: Routes = [
   { path: 'pago', component: PagoComponent,canActivate: [authguardGuard] },
   { path: 'password', component: PasswordComponent },
   { path: 'verificar', component: VerificarComponent,canActivate: [authguardGuard] },
+  { path: 'perfil', component: PerfilComponent,canActivate: [authguardGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: HomeComponent ,canActivate: [authguardGuard] }
 ];

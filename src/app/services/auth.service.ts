@@ -13,6 +13,7 @@ export class AuthService {
   private readonly SECURE_DATA_URL = `${this.BASE_URL}/auth/verify`;
   private readonly CREATEUSER = `${this.BASE_URL}/cliente/createCliente`;
   private readonly VERIFICAR = `${this.BASE_URL}/cliente/verificarCodigo`;
+  private readonly GETCLIENTE = `${this.BASE_URL}/cliente/getCliente`;
 
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
@@ -46,6 +47,10 @@ export class AuthService {
     } else {
       return new Observable((observer) => observer.error('No token'));
     }
+  }
+
+  getCliente(token:any): Observable<any> {
+    return this.http.post<any>(this.GETCLIENTE, {token:token});
   }
 
 
