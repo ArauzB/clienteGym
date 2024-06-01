@@ -1,0 +1,82 @@
+<form id="pagoForm" (ngSubmit)="finalizarPago(estado.id)">
+  <div class="bg-white rounded-md shadow-sm p-4">
+    <h4 class="text-base font-medium leading-5 text-gray-900">Detalles de Facturación</h4>
+
+    <div class="mt-4">
+      <label for="name" class="block text-sm font-medium text-gray-700">Nombre Completo</label>
+      <input pattern="[a-zA-Z\s]+" title="Ingrese solo letras" type="text" name="name" id="name" class="w-full px-2 py-2 rounded-md border border-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 focus:ring-indigo-500" required pattern="[a-zA-Z\s]+" title="Ingrese solo letras">
+    </div>
+
+    <div class="mt-4">
+      <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+      <input type="email" name="email" id="email" class="w-full px-2 py-2 rounded-md border border-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 focus:ring-indigo-500" required>
+    </div>
+
+
+    @if(paymentType === 'card'){
+      <div class="mt-4" >
+        <div class="flex items-between">
+          <div>
+            <label for="cardNumber" class="block text-sm font-medium text-gray-700">Número de Tarjeta</label>
+            <input type="number" name="cardNumber" id="cardNumber" min="1000000000000000" max="9999999999999999" class="w-full px-2 py-2 rounded-md border border-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 focus:ring-indigo-500" required>
+          </div>
+          <div class="ml-4">
+            <label for="expiryMonth" class="block text-sm font-medium text-gray-700">Mes de Vencimiento</label>
+            <select name="expiryMonth" id="expiryMonth" class="w-full px-2 py-2 rounded-md border border-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 focus:ring-indigo-500" required>
+              <option>Enero</option>
+              <option>Febrero</option>
+              <option>Marzo</option>
+              <option>Abril</option>
+              <option>Mayo</option>
+              <option>Junio</option>
+              <option>Julio</option>
+              <option>Agosto</option>
+              <option>Septiembre</option>
+              <option>Octubre</option>
+              <option>Noviembre</option>
+              <option>Diciembre</option>
+            </select>
+          </div>
+        </div>
+        <div class="flex items-between mt-4">
+          <div>
+            <label for="expiryYear" class="block text-sm font-medium text-gray-700">Año de Vencimiento</label>
+            <select name="expiryYear" id="expiryYear" class="w-full px-2 py-2 rounded-md border border-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 focus:ring-indigo-500" required>
+              <option>2024</option>
+              <option>2025</option>
+              <option>2026</option>
+            </select>
+          </div>
+          <div class="ml-4">
+            <label for="cvv" class="block text-sm font-medium text-gray-700">CVV</label>
+            <input type="number" name="cvv" id="cvv" min class="w-full px-2 py-2 rounded-md border border-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 focus:ring-indigo-500" required min="100" max="999">
+          </div>
+        </div>
+      </div>
+
+    }
+    <!-- Mostrar solo si se selecciona tarjeta de crédito/débito -->
+
+
+
+
+
+    <div class="flex items-center mt-4">
+      <input type="radio" id="card" name="paymentType" value="card" [(ngModel)]="paymentType" required>
+      <label for="card" class="ml-2 block text-sm font-medium text-gray-700">Tarjeta de Crédito/Débito</label>
+    </div>
+
+    <div class="mt-4">
+      <input type="radio" id="paypal" name="paymentType" value="paypal" [(ngModel)]="paymentType" required>
+      <label for="paypal" class="ml-2 block text-sm font-medium text-gray-700">PayPal</label>
+    </div>
+
+    <div class="mt-4">
+      <p class="text-sm text-gray-600">Serás redirigido a PayPal para completar tu compra de manera segura.</p>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <button type="submit" class="w-full px-4 py-2 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Realizar Pago</button>
+  </div>
+</form>

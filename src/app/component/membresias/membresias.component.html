@@ -1,0 +1,41 @@
+<div class="flex flex-col min-h-full px-6 py-12 lg:px-8">
+  <h2 class="text-2xl font-bold leading-7 text-gray-900">Elija su Plan de Membresía</h2>
+
+  <div class="mt-8">
+    <div class="flex flex-wrap -m-2">
+
+      @for (membresia of membresias; track membresia){
+        <div class="flex flex-col min-h-full px-6 py-12 lg:px-8">
+          <h2 class="text-2xl font-bold leading-7 text-gray-900">{{membresia.DESCRIPCION}}</h2>
+
+          <div class="mt-8">
+            <div class="bg-white rounded-md shadow-sm p-6">
+              <div class="flex items-center justify-between">
+                <h4 class="text-lg font-medium leading-6 text-gray-900">{{membresia.NOMBRE}}</h4>
+                <span class="font-bold text-gray-900">Q.{{membresia.PRECIO}}</span>
+              </div>
+
+              <ul class="mt-4">
+                <li class="text-sm text-gray-500"><i class="fas fa-check"></i> Acceso ilimitado al gimnasio</li>
+                <li class="text-sm text-gray-500"><i class="fas fa-check"></i> Uso de todas las máquinas y equipos</li>
+                <li class="text-sm text-gray-500"><i class="fas fa-check"></i> Clases grupales ilimitadas</li>
+                <li class="text-sm text-gray-500"><i class="fas fa-check"></i> Entrenamiento personal con un descuento del 10%</li>
+                <li class="text-sm text-gray-500"><i class="fas fa-check"></i> Acceso a vestuarios y lockers</li>
+                <li class="text-sm text-gray-500"><i class="fas fa-check"></i> Toalla gratis por cada visita</li>
+              </ul>
+
+              <div class="mt-4">
+                <button (click)="addToCart(membresia)" class="px-4 py-2 rounded-md bg-indigo-600 text-white font-medium text-sm shadow-sm hover:bg-indigo-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:ring-indigo-600">Elegir</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      }
+
+
+
+
+    </div>
+  </div>
+</div>
